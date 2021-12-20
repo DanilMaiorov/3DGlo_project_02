@@ -1,0 +1,1 @@
+(()=>{"use strict";(()=>{const o="one.js module";console.log(o),console.log(o)})(),(()=>{const o="two.js module";console.log(o),console.log(o)})()})();
