@@ -3,7 +3,7 @@ import menu from './modules/menu';
 import modal from './modules/modal';
 
 
-timer('00:00:00 23 december 2021');
+timer('00:00:00 25 december 2021');
 menu();
 modal();
 

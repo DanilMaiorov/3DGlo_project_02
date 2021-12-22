@@ -10,7 +10,27 @@ const menu = () => {
 
     menuBtn.addEventListener('click', handleMenu);
     closeBtn.addEventListener('click', handleMenu);
-    menuItems.forEach(menuItem => menuItem.addEventListener('click', handleMenu));
+    
+    menuItems.forEach(menuItem => {
+        menuItem.addEventListener('click', (e) => {
+            e.preventDefault();
+            let idAnchor = menuItem.getAttribute('href');
+            document.querySelector(idAnchor).scrollIntoView({
+                block: 'start',
+                behavior: 'smooth'
+            });
+            handleMenu(); 
+        });
+    });
+
+    const scrollImg = document.querySelector('main > a > img'); 
+    const serviceBlock = document.querySelector('#service-block');
+    
+    const clicker = (e) => {
+        e.preventDefault();
+        serviceBlock.scrollIntoView({block: 'start', behavior: 'smooth'});
+    };
+    scrollImg.addEventListener('click', clicker);
      
 };
 
