@@ -34,7 +34,6 @@ const getTimeRemaining = () => {
 
     let updateClock = setInterval(() => {
         let getTime = getTimeRemaining();
-        console.log(getTime);
 /*         timerDays.textContent = getTime.days + dayForms(getTime.days, text_forms_days); */
         timerHours.textContent = (getTime.hours < 10) ? '0' + getTime.hours : getTime.hours;
         timerMinutes.textContent = (getTime.minutes < 10) ? '0' + getTime.minutes : getTime.minutes;
