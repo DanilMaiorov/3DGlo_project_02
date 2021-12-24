@@ -16,7 +16,6 @@ const modal = () => {
             } else {
                 modal.style.opacity = '0'; 
                 modal.style.display = 'block';
-                modal.style.transform = 'translate(0%, 0%)';
                 setTimeout(() => {
                     modal.style.opacity = '1'; 
                     modal.style.transition = '.6s all';
@@ -30,7 +29,6 @@ const modal = () => {
         if(screenWidth.offsetWidth < 768) {
             modal.style.display = 'none';
         } else {
-            modal.style.transform = 'translate(-50%, calc(-50% + 100px))';
             modal.style.opacity = '0';
             modal.style.transition = '.6s all';
                 setTimeout(() => {

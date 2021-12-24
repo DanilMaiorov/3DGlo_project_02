@@ -4,6 +4,7 @@ const menu = () => {
     const closeBtn = menu.querySelector('.close-btn');
     const menuItems = menu.querySelectorAll('ul > li > a');
 
+
     const handleMenu = () => {
         menu.classList.toggle('active-menu');
     };
@@ -19,18 +20,19 @@ const menu = () => {
                 block: 'start',
                 behavior: 'smooth'
             });
-            handleMenu(); 
+             handleMenu(); 
         });
     });
 
-    const scrollImg = document.querySelector('main > a > img'); 
+   
+    const scrollImg = document.querySelector('main > a');   
     const serviceBlock = document.querySelector('#service-block');
     
     const clicker = (e) => {
         e.preventDefault();
         serviceBlock.scrollIntoView({block: 'start', behavior: 'smooth'});
     };
-    scrollImg.addEventListener('click', clicker);
+    scrollImg.addEventListener('click', clicker); 
      
 };
 
