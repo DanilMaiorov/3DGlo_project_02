@@ -7,27 +7,42 @@ const validation = () => {
     const onlyNumber = (e) => {
         e.target.value = e.target.value.replace(/\D+/gi, '');
     };
-
     squareForm.addEventListener('input', onlyNumber);
-    countForm.addEventListener('input', onlyNumber);
-    dayForm.addEventListener('input', onlyNumber);
+    countForm.addEventListener('input', onlyNumber); 
+    dayForm.addEventListener('input', onlyNumber); 
 
    
-   const formBtn = document.querySelectorAll('button[type=submit]'); //кнопки
+   //const formBtn = document.querySelectorAll('button[type=submit]'); //кнопки
     const nameForm = document.querySelectorAll('[id$="-name"]'); //инпуты с именем
     const secondFormMessage = document.querySelector('#form2-message'); //инпут с сообщением возле футера
         const arrayInputText = [...nameForm, secondFormMessage]; //массив с инпутами с текстом
     const emailForm = document.querySelectorAll('.form-email'); //массив с инпутами с мылом
     const telForm = document.querySelectorAll('.form-phone'); //массив с инпутами с телефонами 
 
-
+    arrayInputText.forEach(inputTextItem => {
+        inputTextItem.addEventListener('input', (e) => {
+            e.target.value = e.target.value.replace(/[^а-яА-я\-\s]+/gi, '');
+        });
+    });
+    emailForm.forEach(emailItem => {
+        emailItem.addEventListener('input', (e) => {
+            e.target.value = e.target.value.match(/^[-a-zA-Z!\*.\-_~'\@]+/gim);
+/*            e.target.value = e.target.value.match(/^[-a-zA-Z-!\*\.\-\_~\']+@[\w]+\.[\w]+/g); */
+        });
+    });
+    telForm.forEach(telItem => {
+        telItem.addEventListener('input', (e) => {
+            e.target.value = e.target.value.match(/^[0-9()-]+/gi);
+        });
+    });
+    
     /****ПОПЫТКА ЧЕРЕЗ МАССИВ */
 
-     formBtn.forEach(itemBtn => itemBtn.addEventListener('submit', (e) => {
+     /* formBtn.forEach(itemBtn => itemBtn.addEventListener('submit', (e) => {
         e.preventDefault();
         let isError = false;
         arrayInputText.forEach(inputTextItem => {
-            if (!/[^а-яА-я\-\s]/g.test(inputTextItem.value) && inputTextItem.value !== '') {
+            if (!/[^а-яА-я\-\s]+/g.test(inputTextItem.value) && inputTextItem.value !== '') {
             } else {
                 isError = true;
             }
@@ -41,14 +56,14 @@ const validation = () => {
         });
         telForm.forEach(telItem => {
             let isError = false;
-            if (/[\d\-\)\(]{6,}/gi.test(telItem.value) && telItem.value !== '') {
+            if (/^[0-9()-]{6,}/gi.test(telItem.value) && telItem.value !== '') {
             } else {
                 isError = true;
             }
         });
             if (!isError) {
         }
-    }));  
+    }));   */
 
         //first
     //const firstFormName = document.querySelector('#form1-name'); //type text
