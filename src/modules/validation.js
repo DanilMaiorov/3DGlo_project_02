@@ -26,7 +26,7 @@ const validation = () => {
     });
     emailForm.forEach(emailItem => {
         emailItem.addEventListener('input', (e) => {
-            e.target.value = e.target.value.match(/^[-a-zA-Z!\*.\-_~'\@]+/gim);
+            e.target.value = e.target.value.match(/^[-a-zA-Z0-9!\*.\-_~'\@]+/gim);
 /*            e.target.value = e.target.value.match(/^[-a-zA-Z-!\*\.\-\_~\']+@[\w]+\.[\w]+/g); */
         });
     });
@@ -79,8 +79,6 @@ const validation = () => {
     //const thirdFormEmail = document.querySelector('#form3-email'); //type email
     //const thirdFormTel = document.querySelector('#form3-phone'); //type tel
 
-
-
 /*     const firstFormName = document.querySelector('#form1-name');
     const firstFormEmail = document.querySelector('#form1-email'); //type email
     const firstFormTel = document.querySelector('#form1-phone');
@@ -107,7 +105,7 @@ const validation = () => {
             }
         })
     ))  */
-}
+};
 
 
 
