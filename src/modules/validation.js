@@ -20,20 +20,47 @@ const validation = () => {
     const telForm = document.querySelectorAll('.form-phone'); //массив с инпутами с телефонами 
 
     arrayInputText.forEach(inputTextItem => {
-        inputTextItem.addEventListener('input', (e) => {
-            e.target.value = e.target.value.replace(/[^а-яА-я\-\s]+/gi, '');
+        inputTextItem.addEventListener('blur', (e) => {
+            let testText = /[^а-яА-я\-\s]+/gi;
+            if(testText.test(inputTextItem.value) === false){
+                inputTextItem.value = inputTextItem.value/*.replace(/^ +/gm, '') .replace(/^-+/gm, '') */.slice(0, 1).toUpperCase(0) + inputTextItem.value.slice(1).toLowerCase(0).replace(/[^а-яА-я]+/gi, '').replace(/\s+/g, ' ').replace(/\-+/g, '-');
+        
+            }  else {
+                console.log('Неправильно');
+                inputTextItem.value = inputTextItem.value.replace(/[^а-яА-я]+/gi, '').slice(0, 1).toUpperCase(0) + inputTextItem.value.slice(1).toLowerCase(0).replace(/[a-zA-Z]/gi, '').replace(/\s+/g, ' ').replace(/\-+/g, '-').replace(/[^а-яА-я\-\s]+/gi, '');
+            } 
         });
+    //    inputTextItem.addEventListener('input', (e) => {
+    //        e.target.value = e.target.value.replace(/[^а-яА-я\-\s]+/gi, '');
+    //    });
     });
     emailForm.forEach(emailItem => {
-        emailItem.addEventListener('input', (e) => {
-            e.target.value = e.target.value.match(/^[-a-zA-Z0-9!\*.\-_~'\@]+/gim);
-/*            e.target.value = e.target.value.match(/^[-a-zA-Z-!\*\.\-\_~\']+@[\w]+\.[\w]+/g); */
+        emailItem.addEventListener('blur', () => {
+            let testEmail = /^[^-a-zA-Z0-9!\*.\-_~'\@]+/gim;
+            if(testEmail.test(emailItem.value) === false){
+                emailItem.value = emailItem.value.replace(/[^-a-zA-Z0-9!\*.\-_~'\@]/g, '');
+            }  else {
+                emailItem.value = emailItem.value.replace(/[^-a-zA-Z0-9!\*.\-_~'\@]/g, '');
+                emailItem.value = emailItem.value.replace(/^[^-a-zA-Z0-9!\*.\-_~'\@]/g, '');
+            } 
         });
-    });
+    // emailItem.addEventListener('input', (e) => {
+    //      e.target.value = e.target.value.match(/^[-a-zA-Z0-9!\*.\-_~'\@]+/gim);
+    //      e.target.value = e.target.value.match(/^[-a-zA-Z-!\*\.\-\_~\']+@[\w]+\.[\w]+/g);
+        });
+
     telForm.forEach(telItem => {
-        telItem.addEventListener('input', (e) => {
-            e.target.value = e.target.value.match(/^[0-9()-]+/gi);
+        telItem.addEventListener('blur', () => {
+            let testTel = /^[^0-9()-]+/gi;
+            if(testTel.test(telItem.value) === false){
+                telItem.value = telItem.value/* .replace(/[^0-9()-]+/gi, ''); */
+            } else {
+                telItem.value = telItem.value.replace(/[^0-9()-]/gi, '');
+            }
         });
+    //    telItem.addEventListener('input', (e) => {
+    //        e.target.value = e.target.value.match(/^[0-9()-]+/gi);
+    //    });
     });
     
     /****ПОПЫТКА ЧЕРЕЗ МАССИВ */
