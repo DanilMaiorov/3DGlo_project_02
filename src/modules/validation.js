@@ -26,7 +26,6 @@ const validation = () => {
                 inputTextItem.value = inputTextItem.value/*.replace(/^ +/gm, '') .replace(/^-+/gm, '') */.slice(0, 1).toUpperCase(0) + inputTextItem.value.slice(1).toLowerCase(0).replace(/[^а-яА-я]+/gi, '').replace(/\s+/g, ' ').replace(/\-+/g, '-');
         
             }  else {
-                console.log('Неправильно');
                 inputTextItem.value = inputTextItem.value.replace(/[^а-яА-я]+/gi, '').slice(0, 1).toUpperCase(0) + inputTextItem.value.slice(1).toLowerCase(0).replace(/[a-zA-Z]/gi, '').replace(/\s+/g, ' ').replace(/\-+/g, '-').replace(/[^а-яА-я\-\s]+/gi, '');
             } 
         });
@@ -47,7 +46,7 @@ const validation = () => {
     // emailItem.addEventListener('input', (e) => {
     //      e.target.value = e.target.value.match(/^[-a-zA-Z0-9!\*.\-_~'\@]+/gim);
     //      e.target.value = e.target.value.match(/^[-a-zA-Z-!\*\.\-\_~\']+@[\w]+\.[\w]+/g);
-        });
+    });
 
     telForm.forEach(telItem => {
         telItem.addEventListener('blur', () => {

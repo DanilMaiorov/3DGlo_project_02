@@ -39,7 +39,7 @@ const getTimeRemaining = () => {
         timerMinutes.textContent = (getTime.minutes < 10) ? '0' + getTime.minutes : getTime.minutes;
         timerSeconds.textContent = (getTime.seconds < 10) ? '0' + getTime.seconds : getTime.seconds;
             if (getTime.timeRemaining === 0 || getTime.timeRemaining < 0) {
-                clearInterval(updateClock)
+                clearInterval(updateClock);
                 timerHours.textContent = '00';
                 timerMinutes.textContent = '00';
                 timerSeconds.textContent = '00';
