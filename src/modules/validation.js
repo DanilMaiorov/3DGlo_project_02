@@ -36,7 +36,7 @@ const validation = () => {
     emailForm.forEach(emailItem => {
         emailItem.addEventListener('blur', () => {
             let testEmail = /^[^-a-zA-Z0-9!\*.\-_~'\@]+/gim;
-            if(testEmail.test(emailItem.value) === false){
+            if (testEmail.test(emailItem.value) === false){
                 emailItem.value = emailItem.value.replace(/[^-a-zA-Z0-9!\*.\-_~'\@]/g, '');
             }  else {
                 emailItem.value = emailItem.value.replace(/[^-a-zA-Z0-9!\*.\-_~'\@]/g, '');
@@ -51,7 +51,7 @@ const validation = () => {
     telForm.forEach(telItem => {
         telItem.addEventListener('blur', () => {
             let testTel = /^[^0-9()-]+/gi;
-            if(testTel.test(telItem.value) === false){
+            if (testTel.test(telItem.value) === false){
                 telItem.value = telItem.value/* .replace(/[^0-9()-]+/gi, ''); */
             } else {
                 telItem.value = telItem.value.replace(/[^0-9()-]/gi, '');
