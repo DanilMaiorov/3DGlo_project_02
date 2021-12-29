@@ -11,4 +11,4 @@ menu();
 modal();
 validation();
 tabs();
-slider('portfolio-item-active', 'dot-active', 'dot', '.portfolio-btn', '.dot');
+slider();
