@@ -1,3 +1,4 @@
+
 const slider = () => {
     const sliderBlock = document.querySelector('.portfolio-content');
     const slides = document.querySelectorAll('.portfolio-item');
@@ -79,9 +80,6 @@ const slider = () => {
     dotAdd();
   };
   export default slider;
-
-
-
 
 
 
