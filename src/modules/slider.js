@@ -78,7 +78,6 @@ const slider = () => {
     startSlide(timerInterval);
     dotAdd();
   };
-  
   export default slider;
 
 
