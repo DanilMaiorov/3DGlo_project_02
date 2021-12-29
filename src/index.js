@@ -12,5 +12,10 @@ menu();
 modal();
 validation();
 tabs();
-slider();
+class Slider {
+    constructor() {
+    slider('dot', 'portfolio-btn');
+    }
+}
+new Slider().slider();
 calc(100); //передадим в функцию стоимость одного квадратного метра площади
