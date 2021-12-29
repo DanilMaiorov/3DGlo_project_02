@@ -1,4 +1,6 @@
 
+//LESSON 23
+
 const slider = () => {
     const sliderBlock = document.querySelector('.portfolio-content');
     const slides = document.querySelectorAll('.portfolio-item');
