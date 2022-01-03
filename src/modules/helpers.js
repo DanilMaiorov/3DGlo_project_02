@@ -3,7 +3,7 @@ const animate = ({timing, draw, duration}) => {
     let start = performance.now();
 
     requestAnimationFrame(function animate(time) {
-
+        
         let timeFraction = (time - start) / duration;
         if (timeFraction > 1) timeFraction = 1;
 

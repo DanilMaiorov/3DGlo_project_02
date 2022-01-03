@@ -2,6 +2,8 @@
 //САМОЕ ВАЖНОЕ ПРИ НАПИСАНИИ КАЛЬКУЛЯТОРА ЯВЛЯЮТСЯ ФОРМУЛЫ ДЛЯ РАСЧЁТА
 //РЕАЛИЗАЦИЯ РАСЧЁТА ТИПОВ ПЛОЩАДИ
 
+import { animate } from './helpers'
+
  const calc = (price = 100) => { 
         const calcBlock = document.querySelector('.calc-block');
         const calcType = document.querySelector('.calc-type');
@@ -40,7 +42,17 @@
                 e.target === calcCount || e.target === calcDay) { 
                 clearInterval(interval);
                 countCalc();
-                    const time = 1500;
+
+                animate({
+                    duration: 2200,
+                    timing(timeFraction) {
+                    return 1 - Math.sin(Math.acos(timeFraction));
+                    },
+                    draw(progress) {
+                        total.textContent = Math.round(totalValue * progress);
+                    }
+                });
+/*                     const time = 1500;
                     const step = 100;                
                     let n = 0;
                     let count = Math.round(time / (totalValue / step));
@@ -54,7 +66,7 @@
                             total.textContent = n;
                         }, count);
                     }  
-                    console.log(totalValue);
+                    console.log(totalValue); */
                 }
         });  
 };
