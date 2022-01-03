@@ -1,6 +1,5 @@
 
 //LESSON 23
-
 /* const slider = (dot, portfolioBtn, activeSlide = 'portfolio-item-active', dotActive = 'dot-active') => {
     const sliderBlock = document.querySelector('.portfolio-content');
     const slides = document.querySelectorAll('.portfolio-item');
