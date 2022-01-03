@@ -2,7 +2,7 @@
 //САМОЕ ВАЖНОЕ ПРИ НАПИСАНИИ КАЛЬКУЛЯТОРА ЯВЛЯЮТСЯ ФОРМУЛЫ ДЛЯ РАСЧЁТА
 //РЕАЛИЗАЦИЯ РАСЧЁТА ТИПОВ ПЛОЩАДИ
 
-const calc = (price = 100) => { 
+ const calc = (price = 100) => { 
         const calcBlock = document.querySelector('.calc-block');
         const calcType = document.querySelector('.calc-type');
         const calcSquare = document.querySelector('.calc-square');
@@ -41,7 +41,7 @@ const calc = (price = 100) => {
                 clearInterval(interval);
                 countCalc();
                     const time = 1500;
-                    const step = 500;                
+                    const step = 100;                
                     let n = 0;
                     let count = Math.round(time / (totalValue / step));
                         if (totalValue !== 0) {
@@ -61,10 +61,10 @@ const calc = (price = 100) => {
 
 export default calc;
 
+/*
+const calc = (price = 100) => { //примем параметр, который передали в вызове функции, будет приниматься если мы не будем передавать значение в вызове
 
-//const calc = (price = 100) => { примем параметр, который передали в вызове функции, будет приниматься если мы не будем передавать значение в вызове
-
-    /* //РАБОТАТЬ БУДЕМ ЧЕРЕЗ ДЕЛЕГИРОВАНИЕ
+     //РАБОТАТЬ БУДЕМ ЧЕРЕЗ ДЕЛЕГИРОВАНИЕ
     const calcBlock = document.querySelector('.calc-block'); //получим блок калькулятора
     const calcType = document.querySelector('.calc-type'); //получим поле ввода селекта
     const calcSquare = document.querySelector('.calc-square');//получим поле ввода площади
@@ -127,4 +127,5 @@ export default calc;
         }, count); //задаем интервал
     }
     });  
-};*/
+};
+export default calc; */

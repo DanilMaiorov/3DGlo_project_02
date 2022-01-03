@@ -7,15 +7,15 @@ import slider from './modules/slider';
 import calc from './modules/calculator';
 
 
-timer('00:00:00 31 december 2021');
+timer('00:00:00 31 January 2022');
 menu();
 modal();
 validation();
 tabs();
-class Slider {
+/* class Slider {
     constructor() {
     slider('dot', 'portfolio-btn');
     }
 }
-new Slider().slider();
+new Slider(). */slider();
 calc(100); //передадим в функцию стоимость одного квадратного метра площади

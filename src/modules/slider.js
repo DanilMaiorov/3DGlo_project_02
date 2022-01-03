@@ -1,7 +1,7 @@
 
 //LESSON 23
 
-const slider = (dot, portfolioBtn, activeSlide = 'portfolio-item-active', dotActive = 'dot-active') => {
+/* const slider = (dot, portfolioBtn, activeSlide = 'portfolio-item-active', dotActive = 'dot-active') => {
     const sliderBlock = document.querySelector('.portfolio-content');
     const slides = document.querySelectorAll('.portfolio-item');
     const timerInterval = 2000;
@@ -88,17 +88,9 @@ const slider = (dot, portfolioBtn, activeSlide = 'portfolio-item-active', dotAct
     startSlide(timerInterval);
     dotAdd();
   };
-  export default slider;
+  export default slider; */
 
-
-
-
-
-
-
-
-
-/*   const slider = () => {
+   const slider = () => {
     const sliderBlock = document.querySelector('.portfolio-content');
     const slides = document.querySelectorAll('.portfolio-item');
     const timerInterval = 2000;
@@ -178,4 +170,4 @@ const slider = (dot, portfolioBtn, activeSlide = 'portfolio-item-active', dotAct
     startSlide(timerInterval);
     dotAdd();
   };
-  export default slider; */
+  export default slider; 
