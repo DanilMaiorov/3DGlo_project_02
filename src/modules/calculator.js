@@ -17,7 +17,7 @@
             const calcTypeValue = +calcType.options[calcType.selectedIndex].value; 
             const calcSquareValue = calcSquare.value;
                         
-            let calcCountValue = 1; 
+            let calcCountValue = 1;
             let calcDayValue = 1; 
             
             if (calcCount.value > 1) { 
