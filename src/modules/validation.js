@@ -12,18 +12,18 @@ const validation = () => {
     dayForm.addEventListener('input', onlyNumber); 
 
    
-   //const formBtn = document.querySelectorAll('button[type=submit]'); //кнопки
+    const formBtn = document.querySelectorAll('button[type=submit]'); //кнопки
     const nameForm = document.querySelectorAll('[id$="-name"]'); //инпуты с именем
     const secondFormMessage = document.querySelector('#form2-message'); //инпут с сообщением возле футера
         const arrayInputText = [...nameForm, secondFormMessage]; //массив с инпутами с текстом
     const emailForm = document.querySelectorAll('.form-email'); //массив с инпутами с мылом
     const telForm = document.querySelectorAll('.form-phone'); //массив с инпутами с телефонами 
 
-    arrayInputText.forEach(inputTextItem => {
+/*     arrayInputText.forEach(inputTextItem => {
         inputTextItem.addEventListener('blur', (e) => {
             let testText = /[^а-яА-я\-\s]+/gi;
             if(testText.test(inputTextItem.value) === false){
-                inputTextItem.value = inputTextItem.value/*.replace(/^ +/gm, '') .replace(/^-+/gm, '') */.slice(0, 1).toUpperCase(0) + inputTextItem.value.slice(1).toLowerCase(0).replace(/[^а-яА-я]+/gi, '').replace(/\s+/g, ' ').replace(/\-+/g, '-');
+                inputTextItem.value = inputTextItem.value.slice(0, 1).toUpperCase(0) + inputTextItem.value.slice(1).toLowerCase(0).replace(/[^а-яА-я]+/gi, '').replace(/\s+/g, ' ').replace(/\-+/g, '-');
         
             }  else {
                 inputTextItem.value = inputTextItem.value.replace(/[^а-яА-я]+/gi, '').slice(0, 1).toUpperCase(0) + inputTextItem.value.slice(1).toLowerCase(0).replace(/[a-zA-Z]/gi, '').replace(/\s+/g, ' ').replace(/\-+/g, '-').replace(/[^а-яА-я\-\s]+/gi, '');
@@ -52,7 +52,7 @@ const validation = () => {
         telItem.addEventListener('blur', () => {
             let testTel = /^[^0-9()-]+/gi;
             if (testTel.test(telItem.value) === false){
-                telItem.value = telItem.value/* .replace(/[^0-9()-]+/gi, ''); */
+                telItem.value = telItem.value
             } else {
                 telItem.value = telItem.value.replace(/[^0-9()-]/gi, '');
             }
@@ -60,36 +60,48 @@ const validation = () => {
     //    telItem.addEventListener('input', (e) => {
     //        e.target.value = e.target.value.match(/^[0-9()-]+/gi);
     //    });
-    });
+    }); */
     
-    /****ПОПЫТКА ЧЕРЕЗ МАССИВ */
+    /****ПОПЫТКА ЧЕРЕЗ МАССИВ****/
 
-     /* formBtn.forEach(itemBtn => itemBtn.addEventListener('submit', (e) => {
+        formBtn.forEach(itemBtn => itemBtn.addEventListener('click', (e) => {
         e.preventDefault();
         let isError = false;
+        console.log(isError) //false
         arrayInputText.forEach(inputTextItem => {
             if (!/[^а-яА-я\-\s]+/g.test(inputTextItem.value) && inputTextItem.value !== '') {
+                console.log(isError) //false
             } else {
+                console.log(isError)
                 isError = true;
+                
             }
+            console.log(isError)
         });
         emailForm.forEach(emailItem => {
             let isError = false;
             if (/([a-zA-Z_!*'~\+-.]+(\.[a-zA-Z_!*'~\+-.])*@[a-zA-Z]+(\.[a-zA-Z]+))/gi.test(emailItem.value) && emailItem.value !== '') {
+                console.log(isError)
             } else {
                 isError = true;
+                console.log(isError)
             }
+            console.log(isError)
         });
         telForm.forEach(telItem => {
             let isError = false;
             if (/^[0-9()-]{6,}/gi.test(telItem.value) && telItem.value !== '') {
+                console.log(isError)
             } else {
                 isError = true;
+                console.log(isError)
             }
+            console.log(isError)
         });
             if (!isError) {
+                console.log(isError)
         }
-    }));   */
+    }));    
 
         //first
     //const firstFormName = document.querySelector('#form1-name'); //type text
@@ -105,11 +117,11 @@ const validation = () => {
     //const thirdFormEmail = document.querySelector('#form3-email'); //type email
     //const thirdFormTel = document.querySelector('#form3-phone'); //type tel
 
-/*     const firstFormName = document.querySelector('#form1-name');
+    const firstFormName = document.querySelector('#form1-name');
     const firstFormEmail = document.querySelector('#form1-email'); //type email
     const firstFormTel = document.querySelector('#form1-phone');
 
-    const formBtn = document.querySelectorAll('button[type=submit]')
+    //const formBtn = document.querySelectorAll('button[type=submit]')
     
     
     console.log(formBtn.forEach(itemBtn => itemBtn.addEventListener('submit', (e) => {
@@ -130,9 +142,7 @@ const validation = () => {
             if (!isError) {
             }
         })
-    ))  */
+    ))  
 };
-
-
 
 export default validation;

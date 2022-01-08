@@ -11,7 +11,7 @@ import sendForm from './modules/sendForm';
 timer('00:00:00 31 January 2022');
 menu();
 modal();
-validation();
+//validation();
 tabs();
 /* class Slider {
     constructor() {
@@ -20,7 +20,7 @@ tabs();
 }
 new Slider(). */slider();
 calc(100); //передадим в функцию стоимость одного квадратного метра площади
-sendForm({ formId: 'form1', someElem: [
+ sendForm({ formId: 'form1', someElem: [
     {
         type: 'block',
         id: 'total'
@@ -28,5 +28,10 @@ sendForm({ formId: 'form1', someElem: [
     }
 ] }) //передадим объект, у которого будет formId и добавим массив someElem? который будет содержать какие либо данные из каких либо полей, например калькулятор, или другой инпут
 
-sendForm({ formId: 'form2' })
-sendForm({ formId: 'form3' })
+sendForm({ formId: 'form2', someElem: [
+    {
+       type: 'input',
+       id: 'form2-message' 
+    }
+] })
+sendForm({ formId: 'form3' }) 
