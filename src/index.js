@@ -11,14 +11,9 @@ import sendForm from './modules/sendForm';
 timer('00:00:00 31 January 2022');
 menu();
 modal();
-//validation();
+validation();
 tabs();
-/* class Slider {
-    constructor() {
-    slider('dot', 'portfolio-btn');
-    }
-}
-new Slider(). */slider();
+slider();
 calc(100); //передадим в функцию стоимость одного квадратного метра площади
  sendForm({ formId: 'form1', someElem: [
     {

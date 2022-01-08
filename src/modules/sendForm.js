@@ -1,6 +1,129 @@
 //модуль для отправки форм
 
-const sendForm = ({ formId, someElem = [] }) => { //сразу примем id
+const sendForm = ({ formId, someElem = [] }) => {
+    const form = document.getElementById(formId)
+    const statusBlock = document.createElement('div') 
+    const loadText = 'Загрузка...'
+    const errorText = 'Ошибка...'
+    const successText = 'Спасибо! Наш менеджер с вами свяжется'
+
+        /***ВАРИАНТ ВАЛИДАЦИИ ЧЕРЕЗ УСЛОВИЯ****/
+    const validate = (list) => {
+        let success = false 
+            const testPhone = /^[0-9()-\+]+/;
+            const testName = /^[а-яё ]+$/i
+            const testMessage =/^[а-яё0-9 \-\?!.,;:]+$/gi 
+
+            let nameInput
+            let testNameInput
+            let phoneInput
+            let testPhoneInput
+            let messageInput
+            let testMessageInput
+
+          list.forEach(input => {
+
+            if(input.closest('[name=user_name]')) {
+                nameInput = input.closest('[name=user_name]')
+                nameInput = nameInput.value
+            }
+            if(input.closest('[name=user_phone]')) {
+                phoneInput = input.closest('[name=user_phone]')
+                phoneInput = phoneInput.value
+            }
+            if(input.closest('[name=user_message]')) {
+                messageInput = input.closest('[name=user_message]')
+                messageInput = messageInput.value
+            }
+        })
+
+        testNameInput = testName.test(nameInput)
+        console.log(testNameInput)
+        testPhoneInput = testPhone.test(phoneInput)
+        console.log(testPhoneInput)
+        testMessageInput = testMessage.test(messageInput)
+        console.log(testMessageInput)
+
+        if (messageInput === undefined && testNameInput && testPhoneInput) {
+            success = true
+            console.log('Отправка из первой формы и модального успешна')
+        } else if (messageInput && testMessageInput && testNameInput && testPhoneInput) {
+            success = true
+            console.log('Отправка из второй формы с заполненным меседжем успешна') 
+        } else if (messageInput === '') {
+            success = true
+            console.log('Отправка из второй формы с пустым меседжем успешна') 
+        } 
+         else {
+            console.log(success)
+        }
+        return successText
+    }
+
+    const sendData = (data) => {
+        return fetch('https://jsonplaceholder.typicode.com/posts', { 
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(res => res.json())
+    }
+    const submitForm = () => {
+        const formElements = form.querySelectorAll('input')
+
+        const formData = new FormData(form) 
+        const formBody = {}
+        statusBlock.textContent = loadText 
+        form.append(statusBlock)
+        formData.forEach((value, key) => {
+            formBody[key] = value
+        })
+        someElem.forEach(elem => {
+        const element = document.getElementById(elem.id)
+        if (elem.type === 'block') {
+            formBody[elem.id] = element.textContent
+        } else if (elem.type === 'input') {
+            formBody[elem.id] = element.value
+        }
+        })
+        console.log('submit')
+ 
+        if(validate(formElements)) {
+            sendData(formBody).then(data => {
+                statusBlock.textContent = successText
+                formElements.forEach(input => {
+                    input.value = ''
+                })
+            })
+            .catch (error => {
+                statusBlock.textContent = errorText
+            })
+            alert ('Данные отправлены')
+        } else {
+            alert ('Данные не валидные')
+        }       
+    }
+    try {
+        if(!form) {
+            throw new Error('Верните форму на место!')
+        }
+        form.addEventListener('submit', (e) => {
+            e.preventDefault()
+            submitForm()
+        })
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
+export default sendForm
+
+
+
+//модуль для отправки форм
+
+/*const sendForm = ({ formId, someElem = [] }) => { //сразу примем id
     const form = document.getElementById(formId) //получим эту форму со страницы
 
     const statusBlock = document.createElement('div') //создадим новый блок, который будет оповещать нас о том, что загрузка началась
@@ -23,7 +146,7 @@ const sendForm = ({ formId, someElem = [] }) => { //сразу примем id
         return success //делаем возврат success
         ****/
         /****ВТОРОЙ ВАРИАНТ КАК МОЖНО СДЕЛАТЬ ПРОВЕРКУ НА ВВОДИМЫЕ ЗНАЧЕНИЯ
-         * ****/
+         
     const validate = (list) => {
         let success = false // создаем изменяемую переменную для проверки правильности вводимых данных
 
@@ -32,9 +155,9 @@ const sendForm = ({ formId, someElem = [] }) => { //сразу примем id
             const testMessage =/^[а-яё0-9 \-\?!.,;:]+$/gi //создаем регулярки
 
             let nameInput //создаю переменные на каждый инпут для дальнейшей работы
-            let testNameInput //создаю перемунную теста инпута
+            let testNameInput //создаю переменную теста инпута
 /*             let emailInput
-            let testEmailInput  */
+            let testEmailInput  
             let phoneInput
             let testPhoneInput
             let messageInput
@@ -49,7 +172,7 @@ const sendForm = ({ formId, someElem = [] }) => { //сразу примем id
 /*             if(input.closest('[name=user_email]')) {
                 emailInput = input.closest('[name=user_email]')
                 emailInput = emailInput.value
-            } */
+            } 
             if(input.closest('[name=user_phone]')) {
                 phoneInput = input.closest('[name=user_phone]')
                 phoneInput = phoneInput.value
@@ -134,7 +257,7 @@ const sendForm = ({ formId, someElem = [] }) => { //сразу примем id
         }       
         ***/
 
-        /***ВТОРОЙ ВАРИАНТ ВАЛИДАЦИИ***/
+        /***ВТОРОЙ ВАРИАНТ ВАЛИДАЦИИ
 
         if(validate(formElements)) { //если функция validate будет true
             sendData(formBody).then(data => {//при отправке формы нужно указать передаваемую formBody или формДата
@@ -175,4 +298,4 @@ const sendForm = ({ formId, someElem = [] }) => { //сразу примем id
     }
 }
 
-export default sendForm
+export default sendForm*/
