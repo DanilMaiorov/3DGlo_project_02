@@ -3,9 +3,10 @@
 const sendForm = ({ formId, someElem = [] }) => {
     const form = document.getElementById(formId)
     const statusBlock = document.createElement('div') 
-    const loadText = 'Загрузка...'
-    const errorText = 'Ошибка...'
-    const successText = 'Спасибо! Наш менеджер с вами свяжется'
+        const loadText = 'Загрузка...'
+        const errorText = 'Ошибка...'
+        const successText = 'Спасибо! Наш менеджер с вами свяжется'
+            statusBlock.style.color = '#00FA9A'
 
         /***ВАРИАНТ ВАЛИДАЦИИ ЧЕРЕЗ УСЛОВИЯ****/
     const validate = (list) => {
@@ -16,6 +17,7 @@ const sendForm = ({ formId, someElem = [] }) => {
 
             let nameInput
             let testNameInput
+            let emailInput
             let phoneInput
             let testPhoneInput
             let messageInput
@@ -30,6 +32,12 @@ const sendForm = ({ formId, someElem = [] }) => {
             if(input.closest('[name=user_phone]')) {
                 phoneInput = input.closest('[name=user_phone]')
                 phoneInput = phoneInput.value
+            }   
+            if(input.closest('[name=user_email]')) {
+                emailInput = input.closest('[name=user_email]')
+                console.log(emailInput)
+                emailInput = emailInput.value
+                console.log(emailInput)
             }
             if(input.closest('[name=user_message]')) {
                 messageInput = input.closest('[name=user_message]')
@@ -44,16 +52,21 @@ const sendForm = ({ formId, someElem = [] }) => {
         testMessageInput = testMessage.test(messageInput)
         console.log(testMessageInput)
 
+        if(nameInput == '' || emailInput == '' || phoneInput == '' || messageInput == '') {
+            alert('Будьте любезны, заполните все поля')         
+            return success
+        }
+
         if (messageInput === undefined && testNameInput && testPhoneInput) {
             success = true
-            console.log('Отправка из первой формы и модального успешна')
+            console.log('Отправка из первой формы или модального успешна')
         } else if (messageInput && testMessageInput && testNameInput && testPhoneInput) {
             success = true
             console.log('Отправка из второй формы с заполненным меседжем успешна') 
         } else if (messageInput === '') {
             success = true
             console.log('Отправка из второй формы с пустым меседжем успешна') 
-        } 
+        }
          else {
             console.log(success)
         }

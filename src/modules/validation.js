@@ -11,55 +11,53 @@ const validation = () => {
     countForm.addEventListener('input', onlyNumber); 
     dayForm.addEventListener('input', onlyNumber); 
 
-   
    //const formBtn = document.querySelectorAll('button[type=submit]'); //кнопки
     const nameForm = document.querySelectorAll('[id$="-name"]'); //инпуты с именем
     const secondFormMessage = document.querySelector('#form2-message'); //инпут с сообщением возле футера
-        const arrayInputText = [...nameForm, secondFormMessage]; //массив с инпутами с текстом
     const emailForm = document.querySelectorAll('.form-email'); //массив с инпутами с мылом
     const telForm = document.querySelectorAll('.form-phone'); //массив с инпутами с телефонами 
 
-    arrayInputText.forEach(inputTextItem => {
-        inputTextItem.addEventListener('blur', (e) => {
-            let testText = /[^а-яА-я\-\s]+/gi;
-            if(testText.test(inputTextItem.value) === false){
-                inputTextItem.value = inputTextItem.value/*.replace(/^ +/gm, '') .replace(/^-+/gm, '') */.slice(0, 1).toUpperCase(0) + inputTextItem.value.slice(1).toLowerCase(0).replace(/[^а-яА-я]+/gi, '').replace(/\s+/g, ' ').replace(/\-+/g, '-');
-        
-            }  else {
-                inputTextItem.value = inputTextItem.value.replace(/[^а-яА-я]+/gi, '').slice(0, 1).toUpperCase(0) + inputTextItem.value.slice(1).toLowerCase(0).replace(/[a-zA-Z]/gi, '').replace(/\s+/g, ' ').replace(/\-+/g, '-').replace(/[^а-яА-я\-\s]+/gi, '');
-            } 
+    nameForm.forEach(nameItem => {
+        nameItem.addEventListener('blur', (e) => {
+            let testText = /^[а-яё ]+/gi;
+            if (testText.test(e.target.value)) {
+                nameItem.value =  e.target.value.slice(0, 1).toUpperCase(0) + e.target.value.replace(/\s+/gm, ' ').replace(/[^а-яё ]+/gi, '').slice(1).toLowerCase().replace(/\s+/gm, ' ')             
+                //рабочая вторая часть
+
+                //+ e.target.value.replace(/\-+/gm, '-').replace(/\s+/gm, ' ').slice(1).toLowerCase().replace(/\-+/gm, '-').replace(/\s+/gm, ' ') //рабочая вторая часть
+            } else {
+                nameItem.value = e.target.value.replace(/^\-+/gm, '').replace(/^\s+/gm, '').replace(/[^а-яА-я]+/gi, '').slice(0, 1).toUpperCase(0).replace(/\s+/gm, '').replace(/\-+/gm, '') + e.target.value.replace(/\s+/gm, ' ').replace(/[^а-яё\- ]+/gi, '').slice(1).toLowerCase(0).replace(/\s+/g, ' ');
+
+                //рабочая вторая часть
+               // e.target.value.replace(/\-+/gm, '-').replace(/\s+/gm, ' ').replace(/[^а-яё\- ]+/gi, '').slice(1).toLowerCase().replace(/\-+/gm, '-').replace(/\s+/gm, ' ');//рабочая вторая часть
+            }
         });
-    //    inputTextItem.addEventListener('input', (e) => {
+    //    nameItem.addEventListener('input', (e) => {
     //        e.target.value = e.target.value.replace(/[^а-яА-я\-\s]+/gi, '');
     //    });
     });
+    secondFormMessage.addEventListener('input', (e) => {
+        e.target.value = e.target.value.match(/[а-яё0-9 \-\.,;:?!]+/gi);
+    })
     emailForm.forEach(emailItem => {
-        emailItem.addEventListener('blur', () => {
-            let testEmail = /^[^-a-zA-Z0-9!\*.\-_~'\@]+/gim;
-            if (testEmail.test(emailItem.value) === false){
-                emailItem.value = emailItem.value.replace(/[^-a-zA-Z0-9!\*.\-_~'\@]/g, '');
-            }  else {
-                emailItem.value = emailItem.value.replace(/[^-a-zA-Z0-9!\*.\-_~'\@]/g, '');
-                emailItem.value = emailItem.value.replace(/^[^-a-zA-Z0-9!\*.\-_~'\@]/g, '');
-            } 
-        });
-    // emailItem.addEventListener('input', (e) => {
-    //      e.target.value = e.target.value.match(/^[-a-zA-Z0-9!\*.\-_~'\@]+/gim);
-    //      e.target.value = e.target.value.match(/^[-a-zA-Z-!\*\.\-\_~\']+@[\w]+\.[\w]+/g);
-    });
-
-    telForm.forEach(telItem => {
-        telItem.addEventListener('blur', () => {
-            let testTel = /^[^0-9()-]+/gi;
-            if (testTel.test(telItem.value) === false){
-                telItem.value = telItem.value/* .replace(/[^0-9()-]+/gi, ''); */
+            emailItem.addEventListener('blur', (e) => {
+            let testEmail = /[a-z0-9~*!'_\-\.]*@[\w-]+\.\w{2,4}/gi;
+            if (testEmail.test(e.target.value)){
+                emailItem.value = e.target.value
             } else {
-                telItem.value = telItem.value.replace(/[^0-9()-]/gi, '');
+                emailItem.value = e.target.value.replace(/[а-яё]+/gi, '').replace(/@+/g, '@').replace(/^[\-\s]+/g, '').replace(/[\-\s]+$/g, '');
+            } 
+        }); 
+    })
+    telForm.forEach(telItem => {
+          telItem.addEventListener('blur', (e) => {
+            let testTel = /(\+7|8)[(]?(\d{3})[)]?(\d{3})[-]?(\d{2})[-]?(\d{2})/g;
+            if (testTel.test(e.target.value)){
+                telItem.value = e.target.value
+            } else {
+                telItem.value = e.target.value.replace(/[а-яa-z]+/g, '').replace(/\++/g, '+').replace(/\-+/g, '-').replace(/[^\d\(\)\-\+]+/g, '').replace(/^[\-\s]+/gm, '').replace(/[\-\s]+$/gm, '');
             }
-        });
-    //    telItem.addEventListener('input', (e) => {
-    //        e.target.value = e.target.value.match(/^[0-9()-]+/gi);
-    //    });
+        }); 
     });
     
     /****ПОПЫТКА ЧЕРЕЗ МАССИВ */
@@ -131,7 +129,5 @@ const validation = () => {
         })
     ))  */
 };
-
-
 
 export default validation;
