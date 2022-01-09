@@ -6,7 +6,7 @@ const sendForm = ({ formId, someElem = [] }) => {
         const loadText = 'Загрузка...'
         const errorText = 'Ошибка...'
         const successText = 'Спасибо! Наш менеджер с вами свяжется'
-            statusBlock.style.color = '#00FA9A'
+            
 
         /***ВАРИАНТ ВАЛИДАЦИИ ЧЕРЕЗ УСЛОВИЯ****/
     const validate = (list) => {
@@ -53,7 +53,7 @@ const sendForm = ({ formId, someElem = [] }) => {
         console.log(testMessageInput)
 
         if(nameInput == '' || emailInput == '' || phoneInput == '' || messageInput == '') {
-            alert('Будьте любезны, заполните все поля')         
+            //alert('Будьте любезны, заполните все поля')         
             return success
         }
 
@@ -105,6 +105,7 @@ const sendForm = ({ formId, someElem = [] }) => {
         if(validate(formElements)) {
             sendData(formBody).then(data => {
                 statusBlock.textContent = successText
+                statusBlock.style.color = '#00FA9A'
                 formElements.forEach(input => {
                     input.value = ''
                 })
@@ -112,9 +113,11 @@ const sendForm = ({ formId, someElem = [] }) => {
             .catch (error => {
                 statusBlock.textContent = errorText
             })
-            alert ('Данные отправлены')
+            //alert ('Данные отправлены')
         } else {
-            alert ('Данные не валидные')
+            //alert ('Данные не валидные')
+            statusBlock.style.color = '#ed4e4e'
+            statusBlock.textContent = 'Заполните, пожалуйста, все поля'
         }       
     }
     try {
