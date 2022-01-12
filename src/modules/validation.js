@@ -108,7 +108,6 @@ const validation = () => {
     const firstFormTel = document.querySelector('#form1-phone');
     const formBtn = document.querySelectorAll('button[type=submit]')
     
-    
     console.log(formBtn.forEach(itemBtn => itemBtn.addEventListener('submit', (e) => {
         e.preventDefault();
         let isError = false;
