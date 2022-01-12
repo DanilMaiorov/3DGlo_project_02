@@ -15,14 +15,13 @@ validation();
 tabs();
 slider();
 calc(100); //передадим в функцию стоимость одного квадратного метра площади
- sendForm({ formId: 'form1', someElem: [
+sendForm({ formId: 'form1', someElem: [
     {
         type: 'block',
         id: 'total'
 
     }
 ] }) //передадим объект, у которого будет formId и добавим массив someElem? который будет содержать какие либо данные из каких либо полей, например калькулятор, или другой инпут
-
 sendForm({ formId: 'form2', someElem: [
     {
        type: 'input',
